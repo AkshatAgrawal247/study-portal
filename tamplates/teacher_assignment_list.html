@@ -1,0 +1,37 @@
+{% extends 'thome.html'%}
+{% load static %}
+{% block content %}
+<section>
+  <h1 style="font-weight: 800;">Student's Assignments</h1>
+     <div style="background-color:gray;" class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead >
+        <tr>
+          <th> Assignment tittle</th>
+          <th> Student</th>
+          <th>date created</th>
+            <th>view</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for assignment in assignments %}
+        <tr>
+          <td>{{assignment.tittle}}</td>
+          <td>{{assignment.student}}</td>
+             <td>{{assignment.date_created}}</td>
+             <td><a class="list-button" href="">view</a> </td>             
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+ <div class="helper">
+    Online Exam
+		<span>Breakpoints on 900px and 400px</span>
+  </div>
+{% endblock %}

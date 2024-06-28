@@ -1,0 +1,93 @@
+{% extends 'thome.html'%}
+{% load static %}
+{% block content %}
+<style >
+
+.container{
+    overflow: hidden;
+    margin-bottom: 100px;
+  
+}
+
+
+.container ul li{
+    float:left;
+    list-style: none;
+    width:230px;
+    height:150px;
+    background:white;
+    margin :20px 0px 20px 55px; 
+    border:2px solid #5bc995;
+    box-sizing: border-box;
+  border-radius:5px;
+}
+
+
+.container ul li .bottom{
+    width: 100%;
+    height:50px;
+    line-height: 50px;
+    background:#5bc995;    
+    text-align: center;
+    color:white;
+    font-size: 20px;
+   
+}
+</style>
+<section>
+<h1 style="font-weight: 800;">dashboard</h1>
+
+<div class="container">
+        <ul>
+            <li> <div class="bottom">Student</div><h1>{{no_of_student}}</h1> </li>
+            <li> <div class="bottom">Pending Request</div> <h1>{{no_of_request}}</h1></li>
+            <li> <div class="bottom">Lecture</div> <h1>{{no_of_lecture}}</h1></li>
+            <li> <div class="bottom">Assignment</div> <h1>{{no_of_assignment}}</h1></li>
+            
+        </ul>
+    </div>
+
+    <div >
+       <h1 style="font-weight: 800;">Students who had not completed their Assignments</h1>
+  <div class="tbl-header">
+
+    <table cellpadding="0" cellspacing="0" border="0">
+
+      <thead>
+        <tr>
+          <th>student</th>
+          <th>assignment</th>
+          <th>assignment date</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+
+        {% for student in students %}
+        {% for assignment in assignments %}
+        {% if student not in assignment.students.all %}
+        <tr>
+            <td>{{student}}</td>
+          <td>{{assignment}}</td>
+          <td>{{assignment.date_created}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+        </div>
+
+
+
+</section>
+ <div class="helper">
+    Online Exam
+		<span>Breakpoints on 900px and 400px</span>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'shome.html'%}
+{% load static %}
+{% block content %}
+<section>
+	<h1 style="font-weight: 800;">Profile</h1>
+    <div style=" margin:50px; width: 500px;">
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>student</th>
+
+
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+            <td>Name</td>
+          <td>{{request.user.stud.name}}</td>
+        </tr>
+                <tr>
+
+             <td>Phone</td>
+             <td>{{request.user.stud.phone}}</td>
+        </tr>
+                <tr>
+                    <td>Email</td>
+             <td>{{request.user.stud.email}}</td>
+        </tr>
+              <tr>
+          <td></td>
+          <td><a class="list-button" href="{% url 'student_profile_update' %}">Update Details</a> </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+        </div>
+</section>
+ <div class="helper">
+    Online Exam
+		<span>Breakpoints on 900px and 400px</span>
+  </div>
+{% endblock %}

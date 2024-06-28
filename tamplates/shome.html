@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Homepage</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/teaher_home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/table.css' %}">
+
+</head>
+<body>
+<nav class="menu" tabindex="0">
+	<div class="smartphone-menu-trigger"></div>
+  <header class="avatar">
+      <img>
+      <h2>{{request.user}}</h2>
+  </header>
+	<ul>
+        <a href="{% url 'shome' %}"><li tabindex="0" class="icon-dashboard"><span>Dashboard</span></li></a>
+        <a href="{% url 'student_profile' %}"><li tabindex="0" class="icon-dashboard"><span>Profie</span></li></a>
+        <a href="{% url 'myclasses' %}"><li tabindex="0" class="icon-dashboard"><span>My Classes</span></li></a>
+        <a href="{% url 'student_assignment_list' %}"><li tabindex="0" class="icon-dashboard"><span>Assignment</span></li></a>
+        <a href="{% url 'student_req' %}"><li tabindex="0" class="icon-dashboard"><span>Joining request</span></li></a>
+        <a href="{% url 'teachers' %}"><li tabindex="0" class="icon-dashboard"><span>Join New Class</span></li></a>
+        <a href="{% url 'logoutuser' %}"><li tabindex="0" class="icon-dashboard"><span>Logout</span></li></a>
+
+  </ul>
+</nav>
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+</main>
+</body>
+</html>

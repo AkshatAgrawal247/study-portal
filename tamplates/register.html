@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <style>
+        /*custom font*/
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
+html {
+	height: 100%;
+	/*Image only BG fallback*/
+
+	/*background = gradient + image pattern combo*/
+
+  background: #27AE60;
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+    place-items:center;
+
+}
+/*form styles*/
+#msform {
+	width: 40%;
+  min-width:400px;
+	margin: 200px auto;
+	text-align: center;
+	position: relative;
+
+}
+#msform fieldset {
+  background:#ffea92;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+  color:#fff;
+	width: 80%;
+	margin: 0 10%;
+
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+    </style>
+</head>
+<body>
+<form id="msform" method="post" action="">
+    {% csrf_token %}
+  <fieldset>
+    <h2 class="fs-title">Online Exam</h2>
+    <h3 class="fs-subtitle"></h3>
+    {{form.username}}
+    {{form.password1}}
+     {{form.password2}}
+     {{form.email}}
+      {{form.group}}
+      <p>{{form.errors}}</p>
+    <input type="submit" name="submit" class="submit action-button" value="Register" />
+      <h4 style="color:black">already have an account? <a href="{% url 'login' %}" style="text-decoration:none;color:blue">login</a></h4>
+  </fieldset>
+</form>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='username';
+    form_fields[2].placeholder='Enter password';
+    form_fields[3].placeholder='re-entered password';
+    form_fields[4].placeholder='Email';
+</script>
+</body>
+</html>

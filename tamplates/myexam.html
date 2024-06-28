@@ -1,0 +1,60 @@
+{% extends 'thome.html'%}
+{% load static %}
+{% block content %}
+<section>
+  <a href="{% url 'exam_form' %}" class="list-button" style="margin-bottom:10px;border-radius:5px;padding:20px;">Create Lecture</a>
+  <a href="{% url 'assignment_ques_form' %}" class="list-button" style="margin-bottom:10px;border-radius:5px;padding:20px;">Create Assignment</a>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Lecture tittle</th>
+          <th>date created</th>
+            <th>View</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for exam in exams %}
+        <tr>
+          <td>{{exam.tittle}}</td>
+             <td>{{exam.date_created}}</td>
+             <td><a class="list-button" href="">View lecture</a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+   <div style="background-color:gray; margin-top: 50px;" class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead >
+        <tr>
+          <th> Assignment tittle</th>
+          <th>date created</th>
+            <th>View</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for assignment in assignments %}
+        <tr>
+          <td>{{assignment.tittle}}</td>
+             <td>{{assignment.date_created}}</td>
+             <td><a class="list-button" href="">View Assignment</a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+ <div class="helper">
+    Online Exam
+		<span>Breakpoints on 900px and 400px</span>
+  </div>
+{% endblock %}

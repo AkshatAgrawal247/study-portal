@@ -1,0 +1,37 @@
+{% extends 'shome.html'%}
+{% load static %}
+{% block content %}
+<section>
+  <h1 style="font-weight: 800;">Lectures of {{teacher}} Sir</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>lecture tittle</th>
+          <th>date</th>
+          <th>view</th>
+          <th>download</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for exam in exams %}
+        <tr>
+          <td>{{exam.tittle}}</td>
+          <td>{{exam.date_created}}</td>
+             <td><a class="list-button" href="">View </a> </td>
+             <td><a class="list-button" href="">download </a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+ <div class="helper">
+    Online Exam
+		<span>Breakpoints on 900px and 400px</span>
+  </div>
+{% endblock %}

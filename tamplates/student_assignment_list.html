@@ -1,0 +1,41 @@
+{% extends 'shome.html'%}
+{% load static %}
+{% block content %}
+<section>
+  <h1 style="font-weight: 800;">List of My Assignments</h1>
+     <div style="background-color:gray;" class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead >
+        <tr>
+          <th> Assignment tittle</th>
+          <th> Teacher</th>
+          <th>date created</th>
+            <th>delete</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for assignment in assignments %}
+        <tr>
+          <td>{{assignment.tittle}}</td>
+          <td>{{assignment.teacher}}</td>
+             <td>{{assignment.date_created}}</td>
+             {% if request.user.stud in assignment.students.all %}
+             <td>submitted</td>
+             {% else %}
+             <td><a class="list-button" href="{% url 'assignment_ans_form' assignment.id %}">submit</a> </td>             
+             {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+ <div class="helper">
+    Online Exam
+		<span>Breakpoints on 900px and 400px</span>
+  </div>
+{% endblock %}
